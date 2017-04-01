@@ -1,0 +1,111 @@
+<div class="header-bar has-shadow"
+  appKeycodeListen
+  (onArrowDown)="onArrowDown()"
+  (onArrowUp)="onArrowUp()"
+  (onArrowLeft)="onArrowLeft()"
+  (onArrowRight)="onArrowRight()"
+  (onSpace)="addOrder()"
+  (onDel)="deletePro()"
+  [listenId]="'a'"
+  [priority]="2">
+  <div class="logo-container">
+    <img src="assets/imgs/logo_2.png" class="fl">
+    <h4 class="fl">海豚分销收银系统</h4>
+    <div class="fl icon-box" routerLink="/order/orderList">
+      <i class="icon-sale"></i><br/>销售单据
+    </div>
+    <div class="fl icon-box" (click)="UpdateLocalProduct()">
+      <i class="icon-synchronous"></i><br/>数据同步
+    </div>
+    <div class="fl icon-box" routerLink="/setting">
+      <i class="icon-set"></i><br/>系统设置
+    </div>
+    <div class="fr">
+      <span class="header-avatar">
+        <i class="icon-number"></i>
+      </span>
+      <span class="user-name">{{userName}}</span>
+    </div>
+  </div>
+</div>
+<div class="container has-header has-subfooter can-scroll-y">
+    <section class="content">
+      <table style="width:100%;">
+        <tr>
+          <th>商品条码</th>
+          <th>商品名称</th>
+          <th>售价</th>
+          <!--<th>折扣</th>-->
+          <th>数量</th>
+          <th>单位</th>
+          <th>现价</th>
+          <th>小计</th>
+        </tr>
+
+
+
+          <tr *ngFor="let pro of vectorList, let curIndex = index"  [ngClass]="{isChosen: curIndex === cursorIndex }">
+
+            <!--<td > {{pro.DiscountPrice || 0}}</td>-->
+            <td  *ngIf="pro.ProductCode"> {{pro.ProductCode}}</td>
+              <td  *ngIf="pro.ProductCode"> {{pro.Fullname}}</td>
+              <td  *ngIf="pro.ProductCode"> {{pro.UomList[pro.curUomIndex].UomPrice || 0}}</td>
+              <td  *ngIf="pro.ProductCode">
+                <input type="number" appAutoSelect [(ngModel)]="pro.UomList[pro.curUomIndex].Quantity" (input)="qtyChange(pro)">
+              </td >
+              <td  *ngIf="pro.ProductCode">
+                <span [mdMenuTriggerFor]="menu">{{pro.UomList[pro.curUomIndex].UomName}}</span>
+                <md-menu #menu="mdMenu">
+                  <button md-menu-item *ngFor="let uom of pro.UomList, let i = index;" (click)="choseUom(pro, i)">
+                    <span>{{uom.UomName}}</span>
+                  </button>
+                </md-menu>
+              </td>
+
+              <td  *ngIf="pro.ProductCode">
+                <input appAutoSelect type="number" [(ngModel)]="pro.UomList[pro.curUomIndex].SettlementPrice" (input)="qtyChange(pro)">
+              </td>
+              <td  *ngIf="pro.ProductCode"> {{pro.Amount || 0}}</td>
+              <td *ngIf="!pro.ProductCode">&ensp;</td>
+            <td *ngIf="!pro.ProductCode">&ensp;</td>
+            <td *ngIf="!pro.ProductCode">&ensp;</td>
+            <td *ngIf="!pro.ProductCode">&ensp;</td>
+            <td *ngIf="!pro.ProductCode">&ensp;</td>
+            <td *ngIf="!pro.ProductCode">&ensp;</td>
+            <td *ngIf="!pro.ProductCode">&ensp;</td>
+          </tr>
+
+    </table>
+
+  </section>
+</div>
+<div class="sub-footer">
+  <span class="fl total">{{products.length}}种{{totalNum}}件</span>
+  <div class="fr">
+    <button class="assertive-btn" (click)="deletePro()">删除</button>
+  </div>
+</div>
+<app-add-order-footer
+          [searchQuery]="searchQuery"
+          [dealerQueryStr]="dealerQuery"
+          (onDealerQueryChange)="onDealerQueryChange($event)"
+          (onProQueryChange)="onProQueryChange($event)"
+          [TotalValue]="TotalValue"
+          [curDealer]="curDealer"
+          (onNext)="addOrder()"></app-add-order-footer>
+<app-product-modal
+      [(isShow)]="isShow"
+      [queryStr]="searchQuery"
+      (onQueryChange)="searchPro($event)"
+      [resultList]="searchResultsOfPro"
+      (onProSelected)="onProSelected($event)"></app-product-modal>
+      <app-dealer-modal
+      [queryStr]="dealerQuery"
+      [(isShow)]="dealerShow"
+      (onQueryChange)="searchDealer($event)"
+      [resultList]="searchResultsOfDealer"
+      (onDealerSelected)="onDealerSelected($event)"
+      >
+      </app-dealer-modal>
+<!--<app-modal [(isShow)]="isShow">aaa</app-modal>-->
+

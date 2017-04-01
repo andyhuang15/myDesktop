@@ -1,0 +1,44 @@
+@import '../style/var.scss';
+@import '../style/mixin.scss';
+.container{
+  background: $primary;
+}
+.login-container{
+  width: 560px;
+  height: 523px;
+  @include pos-center (560px, 523px);
+  -webkit-transform: translateY(-100px);
+  transform: translateY(-100px);
+}
+.logo-box{
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  img {
+    width: 476px;
+    height: 158px;
+  }
+}
+.login-form-box{
+  margin-top: 20px;
+  width: 100%;
+  height: 342px;
+  background: #fff;
+  border-radius: 4px;
+  form {
+    width: 493px;
+    margin: 45px auto;
+  }
+
+}
+
+
+button.success {
+  margin-top: 40px;
+  width: 100%;
+  height: 65px;
+ line-height: 65px;
+
+  font-size: 24px;
+  border-radius: 4px;
+}

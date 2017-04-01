@@ -1,0 +1,38 @@
+<app-modal [(isShow)]="isShow" (modalHide)="modalHide()" class="modal">
+  <div class="pro-modal-header">
+    <div class="title-bar">
+      选择经销商
+    </div>
+    <div  class="search-bar row">
+      <div class="col">
+        <i class="icon-search"></i>
+        <input [(ngModel)]="queryStr"  type="text" name="search" (keyup)="search()">
+      </div>
+      <button (click)="search()" class="min-btn primary-btn">搜索</button>
+    </div>
+  </div>
+   <div class="prolist"
+      appKeycodeListen
+      (onArrowDown)="onArrowDown()"
+      (onArrowUp)="onArrowUp()"
+      (onEnter)="onEnter()"
+      (onEsc)="modalHide()"
+      [listenId]="'dealerModal'"
+      [priority]="3"
+      [stopListen]="!isShow"
+    >
+      <table class="min" style="width:100%;">
+      <tr>
+        <th>客户编号</th>
+        <th>客户名称</th>
+        <th>企业编号</th>
+      </tr>
+      <tr *ngFor="let dealer of resultList, let curIndex = index" (click)="onDealerClick(dealer)"  [ngClass]="{isChosen: curIndex === cursorIndex }">
+        <td class="text-center">{{dealer.DealerNum}}</td>
+        <td class="text-center">{{dealer.DealerRemarkName}}</td>
+        <td class="text-center">{{dealer.DealerOrgId}}</td>
+      </tr>
+    </table>
+  </div>
+
+</app-modal>

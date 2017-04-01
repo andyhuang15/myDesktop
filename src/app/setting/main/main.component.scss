@@ -1,0 +1,24 @@
+.nav-container,
+.setting-container{
+  position: absolute;
+  overflow-x: hidden;
+  overflow-y: auto;
+  top:15px;
+  bottom: 15px;
+  background: #fff;
+}
+$basePadding: 70px;
+$navWidth: 380px;
+.nav-container{
+  left: $basePadding;
+  width: $navWidth;
+  .nav-item{
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+  }
+}
+.setting-container{
+  left: $basePadding + $navWidth + 25px;
+  right: $basePadding;
+}

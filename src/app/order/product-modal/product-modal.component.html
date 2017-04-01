@@ -1,0 +1,40 @@
+<app-modal [(isShow)]="isShow" (modalHide)="modalHide()" class="modal">
+  <div class="pro-modal-header">
+    <div class="title-bar">
+      选择商品
+    </div>
+    <div  class="search-bar row">
+      <div class="col">
+        <i class="icon-search"></i>
+        <input [(ngModel)]="queryStr"  type="text" name="search" (keyup)="search()">
+      </div>
+      <button (click)="search()" class="min-btn primary-btn">搜索</button>
+    </div>
+  </div>
+   <div class="prolist"
+      appKeycodeListen
+      (onArrowDown)="onArrowDown()"
+      (onArrowUp)="onArrowUp()"
+      (onArrowLeft)="onArrowLeft()"
+      (onArrowRight)="onArrowRight()"
+      (onEnter)="onEnter()"
+      (onEsc)="modalHide()"
+      [listenId]="'proModal'"
+      [priority]="3"
+      [stopListen]="!isShow"
+    >
+      <table class="min" style="width:100%;">
+      <tr>
+        <th>商品条码</th>
+        <th>商品名称</th>
+        <th>商品价格</th>
+      </tr>
+      <tr *ngFor="let pro of resultList, let curIndex = index" (click)="onProClick(pro)"  [ngClass]="{isChosen: curIndex === cursorIndex }">
+        <td class="text-center">{{pro.ProductCode}}</td>
+        <td class="text-center">{{pro.Fullname}}</td>
+        <td class="text-center">{{pro.SalePrice}}</td>
+      </tr>
+    </table>
+  </div>
+
+</app-modal>

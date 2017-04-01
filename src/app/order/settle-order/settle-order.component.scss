@@ -1,0 +1,25 @@
+.order-container{
+  width: 400px;
+  height: 400px;
+  margin: 50px auto;
+}
+.order-container .row{
+  height: 90px;
+  margin-bottom: 20px;
+  line-height: 90px;
+  border: 1px solid rgb(115,183,184);
+}
+form{
+  margin: 0 auto;
+  width: 480px;
+  height: 230px;
+}
+
+.label{
+  display: inline-block;
+  width: 80px;
+  height: 55px;
+  text-align: center;
+  line-height: 55px;
+  color: #fff;
+}

@@ -1,0 +1,5 @@
+<div class="container window">
+  <router-outlet></router-outlet>
+  <app-loading [hidden]="!isLoadingShow"></app-loading>
+  <app-print-tpl [OrderInfo]="OrderInfo"></app-print-tpl>
+</div>

@@ -1,0 +1,73 @@
+<!--ng-repeat="Item in OrderInfo track by $index"-->
+<div id="printTpl" style="display: none;">
+  <div *ngFor="let Item of OrderInfo" class="print-item">
+      <table class="table table-print" style="border-collapse:collapse; font-family:'SimSun';">
+          <thead>
+          <tr>
+              <!--ng-style="{'font-size':templateInfo.setFontSize+'px'}"-->
+              <td  [attr.colspan]="tableHead.length" style="text-align: center;font-size: 20px;font-weight:700;border: none" >
+                  {{templateInfo.headMsg}}
+              </td>
+          </tr>
+          <tr>
+              <td [attr.colspan]="tableHead.length/2" style="border: none;text-align: left;font-size: 14px;">
+                  <!--ng-repeat="PrintItem in PrintContent track by $index"-->
+                  <span  *ngFor="let PrintItem of PrintContent">
+                      <span>{{PrintItem.Value}}：{{Item[PrintItem.Key]}}</span><br>
+                  </span>
+              </td>
+              <td [attr.colspan]="tableHead.length/2+1" style="border: none;text-align: right;font-size: 14px;">
+                  <span>单据编号：{{Item.BillId}}</span><br>
+                  <span>制单人：{{Item.CreateUserName||Item.CreatUserName||Item.Createname||Item.CreateName||Item.CreatorName}}</span>
+                  <!--*ngIf="printType=='OtherOut'||printType=='SalesOut'"-->
+                  <span  *ngIf="printType=='OtherOut'||printType=='SalesOut'">客户：{{Item.DealerName||"-"}}</span>
+              </td>
+          </tr>
+          <tr style="line-height: 22px;">
+              <th *ngFor="let item of tableHead" width="{{item.Width}}"  style="border: 1px solid #000;font-size: 14px;">
+                  {{item.Name}}
+              </th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let OrderProduct of Item.OrderItem" style="line-height: 22px">
+              <!--ng-style="getPosition(item.textStyle)"-->
+              <td *ngFor="let item of tableHead"
+                  style="border: 1px solid #000;font-size: 14px;border-top: none !important;"
+                  >{{OrderProduct[item.TdData]}}</td>
+          </tr>
+          <tr *ngFor="let items of templateInfo.FixedLine" style="line-height: 22px">
+              <td *ngFor="let item of tableHead" style="border: 1px solid #000;border-top: none !important;"
+                  >&nbsp;</td>
+          </tr>
+          <tr style="line-height: 22px">
+              <td style="border: 1px solid #000;font-size: 14px;text-align: center">总计:</td>
+              <td [attr.colspan]="tableHead.length - 5" style="border: 1px solid #000;font-size: 14px;text-align: center"></td>
+              <td style="border: 1px solid #000;font-size: 14px;text-align: center"><span class="bill-amount" *ngIf="Item.TotalQty">{{Item.TotalQty}}</span></td>
+              <td style="border: 1px solid #000;font-size: 14px;text-align: center"></td>
+              <td style="border: 1px solid #000;font-size: 14px;text-align: center">
+                  <span class="bill-amount">{{Item.SettlementValue}}</span>
+              </td>
+              <td *ngIf="templateInfo.IsNote" style="border: 1px solid #000;"></td>
+          </tr>
+          <tr *ngIf="Item.Remark">
+              <td [attr.colspan]="headHalf" style="border:none;font-size: 14px;">
+                  备注：{{Item.Remark}}<br/>
+              </td>
+          </tr>
+          </tbody>
+          <tfoot>
+          <tr>
+              <td [attr.colspan]="tableHead.length" style="border: none;font-size: 14px;">
+                  <!--<span ng-bind-html="templateInfo.footMsg | ybTrustHtml"></span>-->
+              </td>
+          </tr>
+          <tr>
+              <td [attr.colspan]="tableHead.length" style="text-align:center;border: none;font-size: 10px;" class="display-hidden">
+                  <span tdata="PageNo">第##页</span>/<span tdata="PageCount">共##页</span>
+              </td>
+          </tr>
+          </tfoot>
+      </table>
+  </div>
+</div>

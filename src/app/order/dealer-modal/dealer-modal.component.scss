@@ -1,0 +1,74 @@
+@import '../../style/var.scss';
+.modal {
+  overflow: hidden;
+}
+.pro-modal-header,
+td, th{
+
+  height: 40px;
+  line-height: 40px;
+}
+.pro-modal-header{
+  width: 100%;
+  position: relative;
+  padding: 0 30px;
+  height:110px;
+  background: $bgColor;
+}
+td,th{
+  width: 30%;
+  border: 1px solid $border-color;
+}
+.prolist{
+  position: absolute;
+  top: 110px;
+  left:0;
+  right: 0;
+  bottom:0;
+  padding: 0 30px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background: $bgColor;
+}
+// .iChosen td {
+//   background: cadetblue;
+//   color: blue;
+// }
+.title-bar{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 50px;
+  line-height: 50px;
+  font-size: $titleFontSize;
+  padding: 0 30px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  background: #fff;
+}
+.search-bar{
+  // position: absolute;
+  // width: 100%;
+  border: 1px solid $primary;
+  transform: translateY(63px);
+  // padding-top: 63px;
+  height: 38px;
+  border-radius: 4px;
+  .col {
+    //border: 1px solid $primary;
+    height:36px;;
+    line-height: 36px;
+    padding-left: 30px;
+    box-sizing: border-box;
+    background: #fff;
+    i {
+      position: absolute;
+      left: 10px;
+      top: 0;
+    }
+    input {
+      width: 100%;
+
+    }
+  }
+}

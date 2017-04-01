@@ -1,0 +1,30 @@
+.input-with-icon {
+  position: relative;
+  margin-top: 25px;
+  width: 100%;
+  height: 55px;
+  line-height: 55px;
+  background: #ECECEC 100%;
+  font-size: 18px;
+  input{
+    background: transparent;
+    position: absolute;
+    left: 75px;
+    bottom: 0;
+    height: 55px;
+    padding-left: 15px;
+    color: $primary;
+    font-size: 22px;
+  }
+
+  i {
+    position: absolute;
+    left:0;
+    bottom:0;
+    display: inline-block;
+    width: 75px;
+    height: 55px;
+    background: $primary;
+    font-size: 22px;
+  }
+}

@@ -1,0 +1,55 @@
+@import './var.scss';
+@import './mixin.scss';
+*{
+  margin:0;
+  padding: 0;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  //@include box-sizing
+}
+body {
+  font-size: $baseFontSize;
+  font-family: sans-serif;
+  -webkit-text-size-adjust:none;
+  -webkit-font-smoothing: antialiased;
+}
+html, body, div, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ul, ol, li, form, em, button, input, textarea, th, td, a, img, header, footer, nav, aside, section {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+}
+
+html, body {
+  width: 100%;
+}
+
+:focus {
+  outline: 0;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+// input, button, select, textarea {
+//   font-size: 100%;
+//   outline: none;
+// }
+
+textarea {
+  resize: none
+}
+
+img {
+  border: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  text-decoration: none;
+}

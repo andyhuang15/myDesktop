@@ -1,0 +1,20 @@
+<div class="operation-footer row">
+    <form class="col" (ngSubmit)="proQueryChange()" #form="ngForm" novalidate>
+      <div class="row input-row">
+        <span>商品：</span>
+        <input autofocus autocomplete="off" appFocusById="proSearch"  class="col" name="proQueryStr"  [(ngModel)]="searchQuery" placeholder="条码/拼音码/品名" />
+      </div>
+
+    </form>
+    <form class="col" (ngSubmit)="dealerQueryChange()" #form="ngForm" novalidate>
+      <div class="row input-row">
+        <span>客户：</span>
+        <input  autocomplete="off" class="col" name="dealerQueryStr"  [(ngModel)]="dealerQueryStr" placeholder="拼音码/名称" />
+        <span class="dealer-name ellipsis" *ngIf="curDealer">{{curDealer}}</span>
+      </div>
+    </form>
+    <div class="col btn-col"  (click)="submitClick()">
+      <button>收款（空格键）：￥{{TotalValue}}</button>
+    </div>
+
+</div>

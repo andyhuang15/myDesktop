@@ -1,0 +1,37 @@
+<div class="header-bar has-shadow">
+  <button appBackBtn>返回</button>
+  <title>收款</title>
+
+</div>
+<div
+  appKeycodeListen
+  (onSpace)="submitOrderForRemote()"
+  [listenId]="'settleOrder'"
+  [priority]="2"
+  class="container  has-header" style="padding: 70px;background:#fff;">
+  <form  #form="ngForm" (ngSubmit)="submitOrderForRemote()">
+    <div class="input-with-icon">
+          <span class="label" style="background:#3188DE;">总额</span>
+          <input type="number" required  [(ngModel)]="TotalValue" name="TotalValue" >
+    </div>
+    <div class="input-with-icon">
+          <span class="label" style="background:#FF9100;">现金</span>
+          <input type="number" required  [(ngModel)]="SettlementTotalValue" name="SettlementTotalValue" >
+    </div>
+    <div class="input-with-icon" >
+          <span class="label" style="background:#2AD586;">找零</span>
+          <input type="number" >
+    </div>
+    <button
+       type="submit"
+       class="success-btn blk-btn margin-top-far">
+       <span [hidden]="!isOk">提交</span>
+       <span [hidden]="isOk">确认</span>
+    </button>
+    <button (click)="print()" type="button"
+       class="success-btn blk-btn margin-top-far">
+       打印
+    </button>
+  </form>
+
+</div>

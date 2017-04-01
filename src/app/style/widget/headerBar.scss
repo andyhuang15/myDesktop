@@ -1,0 +1,33 @@
+$header-bar-height:100px;
+.header-bar{
+  position: absolute;
+  left: 0;
+  right:0;
+  top: 0;
+  height: $header-bar-height;
+  background: #fff;
+  z-index: 1;
+  button{
+    position: absolute;
+    left: 70px;
+    height:$header-bar-height;
+    top:0;
+    width: 100px;
+    line-height: $header-bar-height;
+    font-size: 22px;
+    text-align: center;
+    background: #f1f1f1;
+
+  }
+}
+.header-bar .logo-container{
+  position: absolute;
+  left: 70px;
+  right: 70px;
+  top:($header-bar-height - 58px)/2;
+  height: 58px;
+  line-height: 58px;
+}
+.has-shadow{
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}

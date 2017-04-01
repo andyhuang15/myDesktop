@@ -1,0 +1,70 @@
+@import '../../style/var.scss';
+$footerbarHeight : 120px;
+$totalBarHeight: 50px;
+$item-height: 60px;
+
+.header-bar h4{
+  margin-left: 10px;
+  font-size: 28px;
+  color: $primary;
+  font-weight: bold;
+}
+.header-bar .header-avatar{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: #52616F;
+    color: #fff;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50%;
+}
+.header-bar .user-name{
+  font-size: 20px;
+}
+.container {
+  background: rgb(244,244,244);
+  margin-bottom: 20px;
+}
+// .iChosen td{
+//   background: rgba(42,213,134,0.2);
+//   // color: #fff;
+//   // border-color: #fff;
+// }
+
+.sub-footer{
+  position: absolute;
+  left:0;
+  right: 0;
+  bottom: $footerbarHeight;
+  height: $totalBarHeight;
+  padding: 0 70px;
+  background: #fff;
+  border-bottom: 1px solid #f1f1f1;
+  .total {
+    line-height: $totalBarHeight;
+    font-size: 20px;
+  }
+  button {
+    min-height: 50px;
+    line-height: 50px;
+    border-radius: 3px;
+  }
+}
+.icon-box{
+  font-size: 18px;
+  line-height: 24px;
+  min-width: 100px;
+  text-align: center;
+  color: #666;
+  i {
+    font-size: 24px;
+  }
+  &:nth-of-type(1) {
+    margin-left: 50px;
+  }
+  &:hover{
+    color:$primary;
+    cursor: pointer;
+  }
+}

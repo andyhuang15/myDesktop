@@ -1,0 +1,46 @@
+<div class="header-bar has-shadow">
+  <button appBackBtn>返回</button>
+  <title>收款</title>
+</div>
+<div class="container has-header">
+    <section class="list-container">
+      <ul>
+        <li (click)="getDetail(bill.BillId)" class="row row-no-padding row-wrap" *ngFor="let bill of billList">
+          <div class="row row-no-padding">
+            <div class="col-66">{{bill.BillId}}</div>
+            <div class="col-34  text-right">{{bill.TotalValue}}</div>
+          </div>
+          <div class="row row-no-padding">
+            <span >{{bill.DealerOrgName}}</span>
+            <div class="col text-right">{{bill.CreateDate | ybDate}}</div>
+          </div>
+
+        </li>
+      </ul>
+      <app-page-nav [curPage]="curPage" [pages]="pages" (onNext)="nextPage($event)" (onPrev)="prevPage($event)"></app-page-nav>
+    </section>
+    <section class="detail-container">
+      <div class="row row-no-padding">
+        <div class="col text-center">系统编号</div>
+        <div class="col text-center">商品名称</div>
+
+        <div class="col text-center">条码</div>
+        <div class="col text-center">数量</div>
+        <div class="col text-center">金额(元)</div>
+      </div>
+      <div *ngIf="curBill">
+        <div class="row row-no-padding" *ngFor="let pro of curBill.listObject">
+          <div class="col text-center">{{pro.ProductCode}}</div>
+          <div class="col text-center">{{pro.ProductName}}</div>
+
+          <div class="col text-center">{{pro.Barcode}}</div>
+          <div class="col text-center">{{pro.UomContent}}</div>
+          <div class="col text-center">{{pro.Amount}}</div>
+
+        </div>
+      </div>
+
+    </section>
+</div>
+
+
